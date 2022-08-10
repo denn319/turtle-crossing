@@ -2,6 +2,9 @@ from turtle import Turtle
 import random
 
 COLORS = ["black", "yellow", "blue", "red", "green", "cyan", "magenta"]
+STARTING_MOVE_DISTANCE = 5
+MOVE_INCREMENT = 10
+
 STARTING_POS = []
 VEHICLE_NUM = 10
 
@@ -34,9 +37,6 @@ class Vehicle(Turtle):
 
     def drive(self):
         for idx in range(len(self.all_vehicles)):
-            x_new = self.all_vehicles[idx].xcor() - 10
+            x_new = self.all_vehicles[idx].xcor() - STARTING_MOVE_DISTANCE
             y_new = self.all_vehicles[idx].ycor()
             self.all_vehicles[idx].goto((x_new, y_new))
-
-    def __del__(self):
-        print("self destruction...")

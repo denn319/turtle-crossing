@@ -1,6 +1,7 @@
 import time
 from turtle import Turtle, Screen
 from vehicle import Vehicle
+from player import Player
 import time
 
 screen = Screen()
@@ -11,48 +12,18 @@ screen.tracer(0)
 screen.listen()
 
 cars = Vehicle()
+player = Player()
 
-tur = Turtle()
-tur.penup()
-tur.color("black")
-tur.shape("turtle")
-tur.setheading(90)
-
-
-def up():
-    x_new = tur.xcor()
-    y_new = tur.ycor() + 10
-    tur.goto((x_new, y_new))
-
-
-def down():
-    x_new = tur.xcor()
-    y_new = tur.ycor() - 10
-    tur.goto((x_new, y_new))
-
-
-def left():
-    x_new = tur.xcor() - 10
-    y_new = tur.ycor()
-    tur.goto((x_new, y_new))
-
-
-def right():
-    x_new = tur.xcor() + 10
-    y_new = tur.ycor()
-    tur.goto((x_new, y_new))
-
-
-screen.onkey(fun=up, key="Up")
-screen.onkey(fun=down, key="Down")
-screen.onkey(fun=right, key="Right")
-screen.onkey(fun=left, key="Left")
+screen.onkey(fun=player.move_up, key="Up")
+screen.onkey(fun=player.move_down, key="Down")
+screen.onkey(fun=player.move_right, key="Right")
+screen.onkey(fun=player.move_left, key="Left")
 screen.onkey(fun=screen.bye, key="Escape")
 
 
 game_on = True
 while game_on:
-    # time.sleep(0.5)
+    time.sleep(0.1)
     screen.update()
     cars.drive()
 
