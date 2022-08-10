@@ -38,6 +38,5 @@ while game_on:
     if player.at_finish_line():
         board.update_level()
         player.start()
-        vehicle_speed *= 0.9
 
 screen.exitonclick()
