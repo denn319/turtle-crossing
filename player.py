@@ -13,9 +13,9 @@ class Player(Turtle):
         self.color("black")
         self.shape("turtle")
         self.setheading(90)
-        self.birth()
+        self.start()
 
-    def birth(self):
+    def start(self):
         self.goto(STARTING_POSITION)
 
     def move_up(self):
@@ -37,3 +37,6 @@ class Player(Turtle):
         x_new = self.xcor() + MOVE_DISTANCE
         y_new = self.ycor()
         self.goto((x_new, y_new))
+
+    def at_finish_line(self):
+        return self.ycor() > FINISH_LINE_Y

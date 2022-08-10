@@ -5,8 +5,10 @@ COLORS = ["black", "yellow", "blue", "red", "green", "cyan", "magenta"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 
-STARTING_POS = []
+STARTING_POS = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+POS_MULTIPLIER = [1, 2, 3, 4, 5]
 VEHICLE_NUM = 10
+VEHICLE_GAP = 35
 
 
 class Vehicle(Turtle):
@@ -17,17 +19,24 @@ class Vehicle(Turtle):
         self.color(random.choice(COLORS))
         self.pu()
         self.shapesize(stretch_wid=1, stretch_len=2)
-        self.x_start = 380
-        self.y_start = 320
+        self.hideturtle()
+        self.x_start = 500
+        self.y_start = 280
         self.all_vehicles = []
-        self.birth()
+        # self.create()
 
-    def birth(self):
-        for idx in range(1, VEHICLE_NUM + 1, 1):
-            xy_pos = (self.x_start, self.y_start - idx * 40)
-            self.add_vehicle(xy_pos)
+    def create(self):
+        # for idx in range(1, VEHICLE_NUM + 1, 1):
+            # x_pos = self.x_start - random.choice(STARTING_POS) * random.choice(POS_MULTIPLIER)
+            # y_pos = self.y_start - idx * VEHICLE_GAP
+        random_chance = random.randint(1, 6)
+        if random_chance == 1:
+            x_pos = 380
+            y_pos = random.randint(-250, 250)
+            xy_pos = (x_pos, y_pos)
+            self.new_vehicle(xy_pos)
 
-    def add_vehicle(self, xy_pos):
+    def new_vehicle(self, xy_pos):
         new_vehicle = Turtle(shape=self.shape())
         new_vehicle.pu()
         new_vehicle.color(random.choice(COLORS))
