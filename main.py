@@ -21,10 +21,9 @@ screen.onkey(fun=player.move_right, key="Right")
 screen.onkey(fun=player.move_left, key="Left")
 screen.onkey(fun=screen.bye, key="Escape")
 
-vehicle_speed = 0.1
 game_on = True
 while game_on:
-    time.sleep(vehicle_speed)
+    time.sleep(0.1)
     screen.update()
     cars.create()
     cars.drive()
@@ -37,6 +36,7 @@ while game_on:
 
     if player.at_finish_line():
         board.update_level()
+        cars.level_up()
         player.start()
 
 screen.exitonclick()

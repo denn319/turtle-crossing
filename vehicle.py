@@ -1,9 +1,9 @@
 from turtle import Turtle
 import random
 
-COLORS = ["black", "yellow", "blue", "red", "green", "cyan", "magenta"]
+COLORS = ["black", "blue", "red", "green", "cyan", "magenta", "black"]
 STARTING_MOVE_DISTANCE = 5
-MOVE_INCREMENT = 10
+MOVE_INCREMENT = 5
 
 STARTING_POS = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 POS_MULTIPLIER = [1, 2, 3, 4, 5]
@@ -33,8 +33,8 @@ class Vehicle(Turtle):
             self.all_vehicles.append(new_vehicle)
 
     def drive(self):
-        for idx in range(len(self.all_vehicles)):
-            x_new = self.all_vehicles[idx].xcor() - STARTING_MOVE_DISTANCE
-            y_new = self.all_vehicles[idx].ycor()
-            self.all_vehicles[idx].goto((x_new, y_new))
+        for veh in self.all_vehicles:
+            veh.backward(self.car_speed)
 
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
