@@ -1,4 +1,3 @@
-import time
 from turtle import Turtle, Screen
 from vehicle import Vehicle
 from player import Player
